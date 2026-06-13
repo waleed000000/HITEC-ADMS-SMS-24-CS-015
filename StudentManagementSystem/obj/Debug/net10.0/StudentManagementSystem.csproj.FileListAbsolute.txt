@@ -403,3 +403,5 @@ C:\StudentManagementSystem\StudentManagementSystem\bin\Debug\net10.0\ru\Microsof
 C:\StudentManagementSystem\StudentManagementSystem\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\StudentManagementSystem\StudentManagementSystem\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\StudentManagementSystem\StudentManagementSystem\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\StudentManagementSystem\StudentManagementSystem\bin\Debug\net10.0\Npgsql.dll
+C:\StudentManagementSystem\StudentManagementSystem\bin\Debug\net10.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
