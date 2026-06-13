@@ -1,8 +1,191 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Dashboard";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- WELCOME BANNER -->
+<div style="background: linear-gradient(135deg, #1a1a2e, #16213e); border: 1px solid #6c63ff44; border-radius: 16px; padding: 2rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between;">
+    <div>
+        <h1 style="color: #fff; font-size: 1.8rem; font-weight: 700; margin: 0;">
+            Welcome to <span style="color: #6c63ff;">HiSUP</span>
+        </h1>
+        <p style="color: #a0a0b0; margin: 0.5rem 0 0;">HITEC Smart University Portal — Advanced Database Management System</p>
+    </div>
+    <div style="font-size: 4rem;">🎓</div>
+</div>
+
+<!-- STATS CARDS -->
+<div class="row g-3 mb-4">
+    <div class="col-md-3">
+        <div class="stat-card">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">👨‍🎓</div>
+            <div class="number">1,240</div>
+            <div class="label">Total Students</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">👨‍🏫</div>
+            <div class="number">86</div>
+            <div class="label">Faculty Members</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📚</div>
+            <div class="number">340</div>
+            <div class="label">Courses Offered</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏛️</div>
+            <div class="number">12</div>
+            <div class="label">Departments</div>
+        </div>
+    </div>
+</div>
+
+<!-- QUICK ACCESS MODULES -->
+<h5 style="color: #a0a0b0; margin-bottom: 1rem; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;">Quick Access</h5>
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <a asp-controller="Students" asp-action="Index" style="text-decoration: none;">
+            <div class="card h-100" style="border: 1px solid #6c63ff33; transition: all 0.3s; cursor: pointer;" onmouseover="this.style.borderColor='#6c63ff'" onmouseout="this.style.borderColor='#6c63ff33'">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div style="background: #6c63ff22; border-radius: 12px; padding: 1rem; font-size: 1.5rem;">👨‍🎓</div>
+                    <div>
+                        <h6 style="color: #fff; margin: 0; font-weight: 600;">Students</h6>
+                        <p style="color: #a0a0b0; margin: 0; font-size: 0.85rem;">Manage student records</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a asp-controller="Faculty" asp-action="Index" style="text-decoration: none;">
+            <div class="card h-100" style="border: 1px solid #e9456033; transition: all 0.3s;" onmouseover="this.style.borderColor='#e94560'" onmouseout="this.style.borderColor='#e9456033'">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div style="background: #e9456022; border-radius: 12px; padding: 1rem; font-size: 1.5rem;">👨‍🏫</div>
+                    <div>
+                        <h6 style="color: #fff; margin: 0; font-weight: 600;">Faculty</h6>
+                        <p style="color: #a0a0b0; margin: 0; font-size: 0.85rem;">Manage faculty members</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a asp-controller="Courses" asp-action="Index" style="text-decoration: none;">
+            <div class="card h-100" style="border: 1px solid #00b4d833; transition: all 0.3s;" onmouseover="this.style.borderColor='#00b4d8'" onmouseout="this.style.borderColor='#00b4d833'">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div style="background: #00b4d822; border-radius: 12px; padding: 1rem; font-size: 1.5rem;">📚</div>
+                    <div>
+                        <h6 style="color: #fff; margin: 0; font-weight: 600;">Courses</h6>
+                        <p style="color: #a0a0b0; margin: 0; font-size: 0.85rem;">View & manage courses</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a asp-controller="Enrollments" asp-action="Index" style="text-decoration: none;">
+            <div class="card h-100" style="border: 1px solid #f4a26133; transition: all 0.3s;" onmouseover="this.style.borderColor='#f4a261'" onmouseout="this.style.borderColor='#f4a26133'">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div style="background: #f4a26122; border-radius: 12px; padding: 1rem; font-size: 1.5rem;">📋</div>
+                    <div>
+                        <h6 style="color: #fff; margin: 0; font-weight: 600;">Enrollments</h6>
+                        <p style="color: #a0a0b0; margin: 0; font-size: 0.85rem;">Course registrations</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a asp-controller="Grades" asp-action="Index" style="text-decoration: none;">
+            <div class="card h-100" style="border: 1px solid #2ec4b633; transition: all 0.3s;" onmouseover="this.style.borderColor='#2ec4b6'" onmouseout="this.style.borderColor='#2ec4b633'">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div style="background: #2ec4b622; border-radius: 12px; padding: 1rem; font-size: 1.5rem;">⭐</div>
+                    <div>
+                        <h6 style="color: #fff; margin: 0; font-weight: 600;">Grades</h6>
+                        <p style="color: #a0a0b0; margin: 0; font-size: 0.85rem;">Student grades & GPA</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a asp-controller="FeePayments" asp-action="Index" style="text-decoration: none;">
+            <div class="card h-100" style="border: 1px solid #ff006633; transition: all 0.3s;" onmouseover="this.style.borderColor='#ff0066'" onmouseout="this.style.borderColor='#ff006633'">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div style="background: #ff006622; border-radius: 12px; padding: 1rem; font-size: 1.5rem;">💰</div>
+                    <div>
+                        <h6 style="color: #fff; margin: 0; font-weight: 600;">Fee Payments</h6>
+                        <p style="color: #a0a0b0; margin: 0; font-size: 0.85rem;">Fee management</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a asp-controller="LibraryItems" asp-action="Index" style="text-decoration: none;">
+            <div class="card h-100" style="border: 1px solid #8338ec33; transition: all 0.3s;" onmouseover="this.style.borderColor='#8338ec'" onmouseout="this.style.borderColor='#8338ec33'">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div style="background: #8338ec22; border-radius: 12px; padding: 1rem; font-size: 1.5rem;">📖</div>
+                    <div>
+                        <h6 style="color: #fff; margin: 0; font-weight: 600;">Library</h6>
+                        <p style="color: #a0a0b0; margin: 0; font-size: 0.85rem;">Books & resources</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a asp-controller="Departments" asp-action="Index" style="text-decoration: none;">
+            <div class="card h-100" style="border: 1px solid #06d6a033; transition: all 0.3s;" onmouseover="this.style.borderColor='#06d6a0'" onmouseout="this.style.borderColor='#06d6a033'">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div style="background: #06d6a022; border-radius: 12px; padding: 1rem; font-size: 1.5rem;">🏛️</div>
+                    <div>
+                        <h6 style="color: #fff; margin: 0; font-weight: 600;">Departments</h6>
+                        <p style="color: #a0a0b0; margin: 0; font-size: 0.85rem;">University departments</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a asp-controller="AuditLogs" asp-action="Index" style="text-decoration: none;">
+            <div class="card h-100" style="border: 1px solid #ffbe0b33; transition: all 0.3s;" onmouseover="this.style.borderColor='#ffbe0b'" onmouseout="this.style.borderColor='#ffbe0b33'">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div style="background: #ffbe0b22; border-radius: 12px; padding: 1rem; font-size: 1.5rem;">🔍</div>
+                    <div>
+                        <h6 style="color: #fff; margin: 0; font-weight: 600;">Audit Log</h6>
+                        <p style="color: #a0a0b0; margin: 0; font-size: 0.85rem;">System activity log</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+<!-- SYSTEM INFO -->
+<div class="card">
+    <div class="card-body">
+        <h6 style="color: #6c63ff; margin-bottom: 1rem;"><i class="fas fa-info-circle"></i> System Information</h6>
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-sm" style="font-size: 0.85rem;">
+                    <tr><td style="color: #a0a0b0;">Backend</td><td>ASP.NET Core 10.0</td></tr>
+                    <tr><td style="color: #a0a0b0;">Database</td><td>SQL Server</td></tr>
+                    <tr><td style="color: #a0a0b0;">ORM</td><td>Entity Framework Core</td></tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-sm" style="font-size: 0.85rem;">
+                    <tr><td style="color: #a0a0b0;">Hosting</td><td>Railway.app</td></tr>
+                    <tr><td style="color: #a0a0b0;">Frontend</td><td>Bootstrap 5</td></tr>
+                    <tr><td style="color: #a0a0b0;">Course</td><td>CS-402 ADMS Spring 2025</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
