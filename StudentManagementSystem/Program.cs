@@ -4,10 +4,10 @@ using StudentManagementSystem.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Database Connection - PostgreSQL for production, SQL Server for local
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-if (builder.Environment.IsProduction())
+// PostgreSQL production, SQL Server local
+if (connectionString != null && connectionString.StartsWith("Host="))
 {
     builder.Services.AddDbContext<ApplicationDbContext>(options =>
         options.UseNpgsql(connectionString));
@@ -18,7 +18,6 @@ else
         options.UseSqlServer(connectionString));
 }
 
-// Identity
 builder.Services.AddDefaultIdentity<IdentityUser>(options => {
     options.SignIn.RequireConfirmedAccount = false;
     options.Password.RequireDigit = true;
@@ -27,7 +26,6 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => {
 .AddRoles<IdentityRole>()
 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-// MVC
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -44,6 +42,12 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    db.Database.Migrate();
+}
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
@@ -51,9 +55,3 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.Run();
-// Auto migrate database
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    db.Database.Migrate();
-}
