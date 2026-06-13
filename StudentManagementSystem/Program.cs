@@ -4,9 +4,19 @@ using StudentManagementSystem.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Database Connection
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+// Database Connection - PostgreSQL for production, SQL Server for local
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+if (builder.Environment.IsProduction())
+{
+    builder.Services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseNpgsql(connectionString));
+}
+else
+{
+    builder.Services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseSqlServer(connectionString));
+}
 
 // Identity
 builder.Services.AddDefaultIdentity<IdentityUser>(options => {
