@@ -3,73 +3,298 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - StudentManagementSystem</title>
+    <title>@ViewData["Title"] - HiSUP Portal</title>
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/StudentManagementSystem.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        :root {
+        --primary: #6c63ff;
+        --dark-bg: #0f0f1a;
+        --sidebar-bg: #1a1a2e;
+        --card-bg: #16213e;
+        --accent: #e94560;
+        --text-muted: #a0a0b0;
+        }
+
+        body {
+        background-color: var(--dark-bg);
+        color: #e0e0e0;
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        padding: 0;
+        }
+
+        /* TOP NAVBAR */
+        .top-navbar {
+        background: linear-gradient(90deg, #1a1a2e, #16213e);
+        border-bottom: 1px solid #6c63ff44;
+        padding: 0.6rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 20px rgba(108,99,255,0.15);
+        }
+
+        .brand-logo {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #fff;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        }
+
+        .brand-logo span {
+        background: var(--primary);
+        color: white;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        }
+
+        .top-nav-links {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        flex-wrap: wrap;
+        }
+
+        .top-nav-links a {
+        color: #b0b0c8;
+        text-decoration: none;
+        padding: 5px 10px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        }
+
+        .top-nav-links a:hover {
+        background: #6c63ff22;
+        color: #fff;
+        }
+
+        .top-nav-links a i {
+        font-size: 0.8rem;
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+        padding: 2rem;
+        min-height: calc(100vh - 120px);
+        }
+
+        /* CARDS */
+        .card {
+        background: var(--card-bg);
+        border: 1px solid #ffffff10;
+        border-radius: 12px;
+        color: #e0e0e0;
+        }
+
+        .card-header {
+        background: #ffffff08;
+        border-bottom: 1px solid #ffffff10;
+        border-radius: 12px 12px 0 0 !important;
+        font-weight: 600;
+        color: #fff;
+        }
+
+        /* TABLES */
+        .table {
+        color: #e0e0e0;
+        }
+
+        .table thead th {
+        background: #6c63ff22;
+        color: #a090ff;
+        border-color: #ffffff10;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        }
+
+        .table tbody tr {
+        border-color: #ffffff08;
+        transition: background 0.2s;
+        }
+
+        .table tbody tr:hover {
+        background: #6c63ff11;
+        }
+
+        .table td {
+        border-color: #ffffff08;
+        vertical-align: middle;
+        }
+
+        /* BUTTONS */
+        .btn-primary {
+        background: var(--primary);
+        border-color: var(--primary);
+        border-radius: 8px;
+        }
+
+        .btn-primary:hover {
+        background: #5a52d5;
+        border-color: #5a52d5;
+        }
+
+        .btn-sm {
+        border-radius: 6px;
+        font-size: 0.8rem;
+        }
+
+        /* FORMS */
+        .form-control, .form-select {
+        background: #0f0f1a;
+        border: 1px solid #ffffff20;
+        color: #e0e0e0;
+        border-radius: 8px;
+        }
+
+        .form-control:focus, .form-select:focus {
+        background: #0f0f1a;
+        border-color: var(--primary);
+        color: #e0e0e0;
+        box-shadow: 0 0 0 3px #6c63ff33;
+        }
+
+        .form-label {
+        color: #a0a0b0;
+        font-size: 0.9rem;
+        }
+
+        /* BADGES */
+        .badge {
+        border-radius: 6px;
+        font-weight: 500;
+        }
+
+        /* ALERTS */
+        .alert {
+        border-radius: 10px;
+        border: none;
+        }
+
+        /* FOOTER */
+        .footer {
+        background: var(--sidebar-bg);
+        border-top: 1px solid #ffffff10;
+        padding: 1rem 2rem;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        text-align: center;
+        }
+
+        .footer a {
+        color: var(--primary);
+        text-decoration: none;
+        }
+
+        /* PAGE HEADER */
+        .page-header {
+        background: linear-gradient(135deg, #1a1a2e, #16213e);
+        border: 1px solid #6c63ff33;
+        border-radius: 12px;
+        padding: 1.5rem 2rem;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        }
+
+        .page-header h2 {
+        margin: 0;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #fff;
+        }
+
+        .page-header p {
+        margin: 0;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        }
+
+        /* STATS CARDS */
+        .stat-card {
+        background: var(--card-bg);
+        border: 1px solid #ffffff10;
+        border-radius: 12px;
+        padding: 1.2rem;
+        text-align: center;
+        transition: transform 0.2s;
+        }
+
+        .stat-card:hover {
+        transform: translateY(-3px);
+        border-color: var(--primary);
+        }
+
+        .stat-card .number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary);
+        }
+
+        .stat-card .label {
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--dark-bg); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">StudentManagementSystem</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Students" asp-action="Index">Students</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Departments" asp-action="Index">Departments</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Faculty" asp-action="Index">Faculty</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Courses" asp-action="Index">Courses</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Enrollments" asp-action="Index">Enrollments</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Grades" asp-action="Index">Grades</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="FeePayments" asp-action="Index">Fee Payments</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="LibraryItems" asp-action="Index">Library</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="AuditLogs" asp-action="Index">Audit Log</a>
-                        </li>
-                    </ul>
-                    <partial name="_LoginPartial" />
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <!-- TOP NAVBAR -->
+    <nav class="top-navbar">
+        <a class="brand-logo" asp-area="" asp-controller="Home" asp-action="Index">
+            <i class="fas fa-university"></i>
+            HiSUP <span>HITEC</span>
+        </a>
+
+        <div class="top-nav-links">
+            <a asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i> Home</a>
+            <a asp-controller="Students" asp-action="Index"><i class="fas fa-user-graduate"></i> Students</a>
+            <a asp-controller="Departments" asp-action="Index"><i class="fas fa-building"></i> Departments</a>
+            <a asp-controller="Faculty" asp-action="Index"><i class="fas fa-chalkboard-teacher"></i> Faculty</a>
+            <a asp-controller="Courses" asp-action="Index"><i class="fas fa-book"></i> Courses</a>
+            <a asp-controller="Enrollments" asp-action="Index"><i class="fas fa-clipboard-list"></i> Enrollments</a>
+            <a asp-controller="Grades" asp-action="Index"><i class="fas fa-star"></i> Grades</a>
+            <a asp-controller="FeePayments" asp-action="Index"><i class="fas fa-money-bill"></i> Fees</a>
+            <a asp-controller="LibraryItems" asp-action="Index"><i class="fas fa-book-open"></i> Library</a>
+            <a asp-controller="AuditLogs" asp-action="Index"><i class="fas fa-history"></i> Audit Log</a>
+        </div>
+
+        <partial name="_LoginPartial" />
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <main role="main">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - StudentManagementSystem - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+    <!-- FOOTER -->
+    <footer class="footer">
+        &copy; 2026 - HiSUP | HITEC Smart University Portal |
+        <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
