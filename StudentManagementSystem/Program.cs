@@ -6,7 +6,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-// PostgreSQL production, SQL Server local
 if (connectionString != null && connectionString.StartsWith("Host="))
 {
     builder.Services.AddDbContext<ApplicationDbContext>(options =>
