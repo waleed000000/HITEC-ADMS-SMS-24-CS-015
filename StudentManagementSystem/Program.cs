@@ -23,11 +23,7 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
 
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    db.Database.Migrate();
-}
+
 
 app.MapControllerRoute(
     name: "default",
