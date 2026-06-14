@@ -1,35 +1,8 @@
-﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
-
-<div style="display:flex; align-items:center; gap:10px;">
-    @if (SignInManager.IsSignedIn(User))
-    {
-        <a style="color:#b0b0c8; text-decoration:none; font-size:0.85rem;"
-           asp-area="Identity" asp-page="/Account/Manage/Index">
-            <i class="fas fa-user"></i> @User.Identity?.Name
-        </a>
-        <form asp-area="Identity" asp-page="/Account/Logout"
-              asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button type="submit"
-                    style="background:#e9456022; color:#e94560; border:1px solid #e9456044;
-                padding:5px 12px; border-radius:6px; font-size:0.85rem; cursor:pointer;">
-                <i class="fas fa-sign-out-alt"></i> Logout
-            </button>
-        </form>
-    }
-    else
-    {
-        <a style="color:#b0b0c8; text-decoration:none; padding:5px 10px;
-            border-radius:6px; font-size:0.85rem;"
-           asp-area="Identity" asp-page="/Account/Register">
-            <i class="fas fa-user-plus"></i> Register
-        </a>
-        <a style="background:#6c63ff22; color:#a090ff; text-decoration:none;
-            padding:5px 12px; border-radius:6px; font-size:0.85rem;
-            border:1px solid #6c63ff44;"
-           asp-area="Identity" asp-page="/Account/Login">
-            <i class="fas fa-sign-in-alt"></i> Login
-        </a>
-    }
+﻿<div style="display:flex; align-items:center; gap:10px;">
+    <a style="color:#b0b0c8; text-decoration:none; padding:5px 12px;
+        border-radius:6px; font-size:0.85rem;
+        background:#6c63ff22; border:1px solid #6c63ff44;"
+       href="/Identity/Account/Login">
+        <i class="fas fa-sign-in-alt"></i> Login
+    </a>
 </div>
